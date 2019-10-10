@@ -9,10 +9,7 @@ void vector_add(Ptr<Int> a, Ptr<Int> b, Ptr<Int> r) {
 }
 
 void vector_acc(Ptr<Int> a, Ptr<Int> r) {
-	
-	for (int i = 0; i < 512; i++) {
 		*r = *a + *r;
-	}
 }
 
 int main() {
@@ -29,7 +26,9 @@ int main() {
   }
 
   // Invoke the kernel and display the result
-  k(&a, &r);
+  for (int i = 0; i < 512; i++) {
+  	k(&a, &r);
+  }
   
   for (int i = 0; i < 16; i++)
     printf("[%i] = %i\n", i, r[i]);
