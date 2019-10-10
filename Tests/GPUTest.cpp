@@ -131,7 +131,7 @@ int main() {
 
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			printf("%3.2i ", (float) imageA[y * WIDTH + x]);
+			printf("%3.2f ", (float) imageA[y * WIDTH + x]);
 		}
 		printf("\n");
 	}
