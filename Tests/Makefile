@@ -3,7 +3,7 @@ ROOT = ../Lib
 
 # Compiler and default flags
 CXX = clang++
-CXX_FLAGS = -Wconversion -Wsign-conversion -Wswitch -std=c++17 -I $(ROOT)
+CXX_FLAGS = -std=c++17 -I $(ROOT)
 
 # Object directory
 OBJ_DIR = obj
