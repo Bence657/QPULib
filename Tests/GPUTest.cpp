@@ -129,7 +129,7 @@ int main() {
 
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			printf("%4f", (float) imageA[y * WIDTH + x]);
+			printf("%2i ", (int) imageA[y * WIDTH + x]);
 		}
 		printf("\n");
 	}
@@ -140,7 +140,7 @@ int main() {
 
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			printf("%4f", (float) imageB[y * WIDTH + x]);
+			printf("%2i ", (int) imageB[y * WIDTH + x]);
 		}
 		printf("\n");
 	}
