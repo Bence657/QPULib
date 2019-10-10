@@ -109,14 +109,16 @@ int main() {
 	 };
 
 	const int NQPUS = 8;
-	const int WIDTH = 16;
-	const int HEIGHT = 16;
+	const int WIDTH = 512;
+	const int HEIGHT = 512;
 
+	srand(0);
+	const int MAX_VALUE = 10.0;
 	SharedArray<float> imageA(WIDTH*HEIGHT), imageB(WIDTH*HEIGHT);
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
 			printf("%f ", image[y][x]);
-			imageA[y*WIDTH + x] = image[y][x];
+			imageA[y*WIDTH + x] = (float)rand()/((float)RAND_MAX/MAX_VALUE);
 			imageB[y*WIDTH + x] = 0;			
 		}
 	}
