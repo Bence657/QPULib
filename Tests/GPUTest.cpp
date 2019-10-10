@@ -179,8 +179,8 @@ int main() {
 	auto gpu_duration = t2 - t1;
 	auto cpu_duration = t3 - t2;
 
-	std::cout << "GPU Elapsed: " << gpu_duration << " ms" << std::endl;
-	std::cout << "CPU Elapsed: " << cpu_duration << " ms" << std::endl;
+	std::cout << "GPU Elapsed: " << gpu_duration.count() << " ms" << std::endl;
+	std::cout << "CPU Elapsed: " << cpu_duration.count() << " ms" << std::endl;
 
 
 #if 0
