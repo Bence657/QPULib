@@ -63,7 +63,7 @@ void calculate(Ptr<Float> image, Ptr<Float> result, Int width, Int height) {
 		for (int i = 0; i < 3; i++) row[i].prime();
 
 		// Compute one output row
-		For (Int x = 0, x < width x = x + 16)
+		For (Int x = 0, x < width, x = x + 16)
 
 			for (int i = 0; i < 3; i++) row[i].advance();
 
@@ -83,7 +83,7 @@ void calculate(Ptr<Float> image, Ptr<Float> result, Int width, Int height) {
 
 		for (int i = 0; i < 3; i++) row[i].finish();
 		
-		grid = grid + width*numQPUs();
+		image = image + width*numQPUs();
 	End
 }
 
