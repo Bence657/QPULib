@@ -51,7 +51,7 @@ void calculate(Ptr<Float> image, Ptr<Float> result, Int width, Int height) {
 	image = image + width*me() + index();
 
 	// ?
-	result = result + width;
+	// result = result + width;
 
 	For (Int y = me(), y < height, y = y + numQPUs())
 
@@ -115,7 +115,7 @@ int main() {
 	SharedArray<float> imageA(WIDTH*HEIGHT), imageB(WIDTH*HEIGHT);
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			imageA[y*WIDTH + x] = 0;
+			imageA[y*WIDTH + x] = image[y, x];
 			imageB[y*WIDTH + x] = 0;			
 		}
 	}
@@ -123,13 +123,22 @@ int main() {
 	auto k = compile(calculate);
 	k.setNumQPUs(NQPUS);
 
-	k(&imageA, &imageB, WIDTH, HEIGHT);
-
-	printf("Image:\n");
+	printf("Input:\n");
 
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			printf("%i ", imageB[y * WIDTH + x]);
+			printf("%4i", imageA[y * WIDTH + x]);
+		}
+		printf("\n");
+	}
+
+	k(&imageA, &imageB, WIDTH, HEIGHT);
+
+	printf("\nOutput:\n");
+
+	for (int y = 0; y < HEIGHT; y++) {
+		for (int x = 0; x < WIDTH; x++) {
+			printf("%4i", imageB[y * WIDTH + x]);
 		}
 		printf("\n");
 	}
