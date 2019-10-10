@@ -10,7 +10,7 @@ void vector_add(Ptr<Int> a, Ptr<Int> b, Ptr<Int> r) {
 
 void vector_acc(Ptr<Int> a, Ptr<Int> r) {
 	
-	for (int i = 0; i < 1024; i++) {
+	for (int i = 0; i < 512; i++) {
 		*r = *a + *r;
 	}
 }
