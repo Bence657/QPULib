@@ -51,7 +51,7 @@ void calculate(Ptr<Float> image, Ptr<Float> result, Int width, Int height) {
 	image = image + width*me() + index();
 
 	// ?
-	// result = result + width;
+	result = result + width;
 
 	For (Int y = me(), y < height, y = y + numQPUs())
 
