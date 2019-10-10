@@ -115,6 +115,7 @@ int main() {
 	SharedArray<float> imageA(WIDTH*HEIGHT), imageB(WIDTH*HEIGHT);
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
+			printf("%f", image[y][x]);
 			imageA[y*WIDTH + x] = image[y][x];
 			imageB[y*WIDTH + x] = 0;			
 		}
