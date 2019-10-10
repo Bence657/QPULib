@@ -56,10 +56,10 @@ void calculate(Ptr<Float> image, Ptr<Float> result, Int width, Int height) {
 	For (Int y = me(), y < height, y = y + numQPUs())
 
 		// Point p to output row
-		Ptr<Float> p = result + y*pitch;
+		Ptr<Float> p = result + y*width;
 
 		// Initialise three cursors
-		for (int i = 0; i < 3; i++) row[i].init(image + i*pitch);
+		for (int i = 0; i < 3; i++) row[i].init(image + i*width);
 		for (int i = 0; i < 3; i++) row[i].prime();
 
 		// Compute one output row
@@ -83,7 +83,7 @@ void calculate(Ptr<Float> image, Ptr<Float> result, Int width, Int height) {
 
 		for (int i = 0; i < 3; i++) row[i].finish();
 		
-		grid = grid + pitch*numQPUs();
+		grid = grid + width*numQPUs();
 	End
 }
 
