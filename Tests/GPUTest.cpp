@@ -9,29 +9,34 @@ void vector_add(Ptr<Int> a, Ptr<Int> b, Ptr<Int> r) {
 }
 
 void vector_acc(Ptr<Int> a, Ptr<Int> r) {
+	
+	for (int i = 0; i < numQPUs(); i++) {
 		*r = *a + *r;
+	}
 }
 
 int main() {
-  // Construct kernel
-  auto k = compile(vector_acc);
+	// Construct kernel
+	auto k = compile(vector_acc);
+	k.setNumQPUs(4);
 
-  // Allocate and initialise arrays shared between ARM and GPU
-  // SharedArray<int> a(16), b(16), r(16);
-  SharedArray<int> a(16), r(16);
-  
-  for (int i = 0; i < 16; i++) {
-    a[i] = i + 1;
-    r[i] = 0;
-  }
+	// Allocate and initialise arrays shared between ARM and GPU
+	// SharedArray<int> a(16), b(16), r(16);
+	SharedArray<int> a(16), r(16);
+	
+	for (int i = 0; i < 16; i++) {
+		a[i] = i + 1;
+		r[i] = 0;
+	}
 
-  // Invoke the kernel and display the result
-  for (int i = 0; i < 16384; i++) {
-  	k(&a, &r);
-  }
-  
-  for (int i = 0; i < 16; i++)
-    printf("[%i] = %i\n", i, r[i]);
-  
-  return 0;
+		
+	// Invoke the kernel and display the result
+	for (int i = 0; i < 16; i++) {
+		k(&a, &r);
+	}
+	
+	for (int i = 0; i < 16; i++)
+		printf("[%i] = %i\n", i, r[i]);
+	
+	return 0;
 }
