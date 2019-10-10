@@ -51,7 +51,7 @@ void calculate(Ptr<Float> image, Ptr<Float> result, Int width, Int height) {
 	image = image + width*me() + index();
 
 	// ?
-	result = result + width;
+	// result = result + width;
 
 	For (Int y = me(), y < height, y = y + numQPUs())
 
@@ -141,7 +141,7 @@ int main() {
 	k(&imageA, &imageB, WIDTH, HEIGHT);
 
 
-#if 1
+#if 0
 	printf("\nOutput:\n");
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
