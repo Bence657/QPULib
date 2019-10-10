@@ -176,11 +176,13 @@ int main() {
 
 	auto t3 = std::chrono::system_clock::now();
 
+	typedef std::chrono::duration<int, std::milli> ms_type;
+	
 	auto gpu_duration = t2 - t1;
 	auto cpu_duration = t3 - t2;
 
-	std::cout << "GPU Elapsed: " << gpu_duration.count() << " ms" << std::endl;
-	std::cout << "CPU Elapsed: " << cpu_duration.count() << " ms" << std::endl;
+	std::cout << "GPU Elapsed: " << std::chrono::duration_cast<ms_type>(gpu_duration).count() << " ms" << std::endl;
+	std::cout << "CPU Elapsed: " << std::chrono::duration_cast<ms_type>(cpu_duration).count() << " ms" << std::endl;
 
 
 #if 0
