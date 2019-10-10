@@ -106,7 +106,7 @@ int main() {
 		{3, 3, 2, 1, 0, 0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3},
 		{3, 3, 2, 1, 0, 0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3},
 		{3, 3, 2, 1, 0, 0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3},
-	 }
+	 };
 
 	const int NQPUS = 1;
 	const int WIDTH = 16;
@@ -129,7 +129,7 @@ int main() {
 
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			printf("%i ", imageb[y * width + x]);
+			printf("%i ", imageB[y * WIDTH + x]);
 		}
 		printf("\n");
 	}
