@@ -8,23 +8,31 @@ void vector_add(Ptr<Int> a, Ptr<Int> b, Ptr<Int> r) {
 	*r = *a + *b;
 }
 
+void vector_acc(Ptr<Int> a, Ptr<Int> r) {
+	
+	for (int i = 0; i < 16; i++) {
+		*r = *a + *r;
+	}
+}
+
 int main() {
   // Construct kernel
-  auto k = compile(vector_add);
+  auto k = compile(vector_acc);
 
   // Allocate and initialise arrays shared between ARM and GPU
-  SharedArray<int> a(16), b(16), r(16);
+  // SharedArray<int> a(16), b(16), r(16);
+  SharedArray<int> a(16), r(16);
   
   for (int i = 0; i < 16; i++) {
     a[i] = i + 1;
-    b[i] = i + 1;
+    r[i] = 0;
   }
 
   // Invoke the kernel and display the result
-  k(&a, &b, &r);
+  k(&a, &r);
   
   for (int i = 0; i < 16; i++)
-    printf("%i + %i = %i\n", a[i], b[i], r[i]);
+    printf("[%i] = %i\n", i, r[i]);
   
   return 0;
 }

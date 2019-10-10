@@ -61,7 +61,7 @@ top:
 
 clean:
 	rm -rf obj obj-debug obj-qpu obj-debug-qpu
-	rm -f Tri GCD Print MultiTri AutoTest OET Hello ReqRecv Rot3D ID *.o
+	rm -f Tri GCD GPUTest Print MultiTri AutoTest OET Hello ReqRecv Rot3D ID *.o
 	rm -f HeatMap
 
 LIB = $(patsubst %,$(OBJ_DIR)/%,$(OBJ))
