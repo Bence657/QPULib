@@ -173,7 +173,7 @@ int main() {
 
 	auto t2 = std::chrono::system_clock::now();
 
-	calculate_scalar(scalar_image, scalar_result, WIDTH, HEIGHT);
+	// calculate_scalar(scalar_image, scalar_result, WIDTH, HEIGHT);
 
 	auto t3 = std::chrono::system_clock::now();
 
