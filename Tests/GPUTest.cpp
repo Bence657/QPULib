@@ -26,7 +26,7 @@ int main() {
   }
 
   // Invoke the kernel and display the result
-  for (int i = 0; i < 512; i++) {
+  for (int i = 0; i < 16384; i++) {
   	k(&a, &r);
   }
   
