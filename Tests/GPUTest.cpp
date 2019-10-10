@@ -127,25 +127,28 @@ int main() {
 	auto k = compile(calculate);
 	k.setNumQPUs(NQPUS);
 
-	printf("Input:\n");
 
+#if 0
+	printf("Input:\n");
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
 			printf("%3.2f ", (float) imageA[y * WIDTH + x]);
 		}
 		printf("\n");
 	}
+#endif
 
 	k(&imageA, &imageB, WIDTH, HEIGHT);
 
-	printf("\nOutput:\n");
 
+#if 1
+	printf("\nOutput:\n");
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			// printf("%3.2f ", (float) imageB[y * WIDTH + x]);
+			printf("%3.2f ", (float) imageB[y * WIDTH + x]);
 		}
-		// printf("\n");
+		printf("\n");
 	}
-	
+#endif	
 	return 0;
 }
