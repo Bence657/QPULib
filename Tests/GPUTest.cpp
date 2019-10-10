@@ -117,7 +117,7 @@ int main() {
 	SharedArray<float> imageA(WIDTH*HEIGHT), imageB(WIDTH*HEIGHT);
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			printf("%f ", image[y][x]);
+			// printf("%f ", image[y][x]);
 			imageA[y*WIDTH + x] = (float)rand()/((float)RAND_MAX/MAX_VALUE);
 			imageB[y*WIDTH + x] = 0;			
 		}
