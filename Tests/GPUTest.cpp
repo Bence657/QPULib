@@ -132,8 +132,8 @@ int main() {
 	 };
 
 	const int NQPUS = 12;
-	const int WIDTH = 512;
-	const int HEIGHT = 512;
+	const int WIDTH = 1024;
+	const int HEIGHT = 1024;
 
 	srand(0);
 	const int MAX_VALUE = 10.0;
