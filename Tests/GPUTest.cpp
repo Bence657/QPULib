@@ -62,7 +62,7 @@ void calculate_scalar(float* image, float* result, int width, int height) {
 				}
 			}
 
-			float[y * width + x] = sum;
+			result[y * width + x] = sum;
 		}
 	}
 }
