@@ -138,15 +138,15 @@ int main() {
 	const int MAX_VALUE = 10.0;
 	SharedArray<float> imageA(WIDTH*HEIGHT), imageB(WIDTH*HEIGHT);
 
-	float *image = new float[WIDTH * HEIGHT];
-	float *result = new float[WIDTH * HEIGHT];
+	float *scalar_image = new float[WIDTH * HEIGHT];
+	float *scalar_result = new float[WIDTH * HEIGHT];
 
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
 			
 			float value = (float)rand()/((float)RAND_MAX/MAX_VALUE);
 			imageA[y*WIDTH + x] = value;
-			image[y*WIDTH + x] = value;
+			scalar_image[y*WIDTH + x] = value;
 			imageB[y*WIDTH + x] = 0;	
 
 		}
@@ -172,7 +172,7 @@ int main() {
 
 	auto t2 = std::chrono::system_clock::now();
 
-	calculate_scalar(image, result, WIDTH, HEIGHT);
+	calculate_scalar(scalar_image, scalar_result, WIDTH, HEIGHT);
 
 	auto t3 = std::chrono::system_clock::now();
 
