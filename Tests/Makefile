@@ -2,8 +2,8 @@
 ROOT = ../Lib
 
 # Compiler and default flags
-CXX = g++
-CXX_FLAGS = -Wconversion -std=c++0x -I $(ROOT)
+CXX = clang++
+CXX_FLAGS = -Wconversion -std=c++17 -I $(ROOT)
 
 # Object directory
 OBJ_DIR = obj
