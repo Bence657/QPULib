@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include "QPULib.h"
+#include <chrono>
 
 struct Cursor {
   Ptr<Float> addr;
@@ -44,6 +45,26 @@ struct Cursor {
     End
   }
 };
+
+void calculate_scalar(float* image, float* result, int width, int height) {
+
+	for (int y = 0; y < height; y++) {
+		for (int x = 0; x < width; x++) {
+			
+			float sum = 0;
+			for (int dx = -1; dx <= 1; dx++) {
+				for (int dy = -1; dy <= 1; dy++) {
+
+					if (x + dx < 0 || x + dx >= width) continue;
+					if (y + dy < 0 || y + dy >= height) continue;
+					sum += image[(y + dy) * width + (x + dx)];
+				}
+			}
+
+			float[y * width + x] = sum;
+		}
+	}
+}
 
 void calculate(Ptr<Float> image, Ptr<Float> result, Int width, Int height) {
 	Cursor row[3];
@@ -115,14 +136,20 @@ int main() {
 	srand(0);
 	const int MAX_VALUE = 10.0;
 	SharedArray<float> imageA(WIDTH*HEIGHT), imageB(WIDTH*HEIGHT);
+
+	float *image = new float[WIDTH * HEIGHT];
+	float *result = new float[WIDTH * HEIGHT];
+
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			// printf("%f ", image[y][x]);
-			imageA[y*WIDTH + x] = (float)rand()/((float)RAND_MAX/MAX_VALUE);
-			imageB[y*WIDTH + x] = 0;			
+			
+			float value = (float)rand()/((float)RAND_MAX/MAX_VALUE);
+			imageA[y*WIDTH + x] = value;
+			image[y*WIDTH + x] = value;
+			imageB[y*WIDTH + x] = 0;	
+
 		}
 	}
-	printf("\n");
 
 	auto k = compile(calculate);
 	k.setNumQPUs(NQPUS);
@@ -138,7 +165,21 @@ int main() {
 	}
 #endif
 
+	auto t1 = std::chrono::system_clock::now();
+
 	k(&imageA, &imageB, WIDTH, HEIGHT);
+
+	auto t2 = std::chrono::system_clock::now();
+
+	calculate_scalar(image, result, WIDTH, HEIGHT);
+
+	auto t3 = std::chrono::system_clock::now();
+
+	auto gpu_duration = t2 - t1;
+	auto cpu_duration = t3 - t2;
+
+	std::cout << "GPU Elapsed: " << gpu_duration << " ms" << std::endl;
+	std::cout << "CPU Elapsed: " << cpu_duration << " ms" << std::endl;
 
 
 #if 0
