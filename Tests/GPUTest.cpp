@@ -142,9 +142,9 @@ int main() {
 
 	for (int y = 0; y < HEIGHT; y++) {
 		for (int x = 0; x < WIDTH; x++) {
-			printf("%3.2f ", (float) imageB[y * WIDTH + x]);
+			// printf("%3.2f ", (float) imageB[y * WIDTH + x]);
 		}
-		printf("\n");
+		// printf("\n");
 	}
 	
 	return 0;
