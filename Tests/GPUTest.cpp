@@ -131,7 +131,7 @@ int main() {
 		{3, 3, 2, 1, 0, 0, 0, 1, 2, 3, 3, 3, 3, 3, 3, 3},
 	 };
 
-	const int NQPUS = 12;
+	const int NQPUS = 4;
 	const int WIDTH = 1024;
 	const int HEIGHT = 1024;
 
