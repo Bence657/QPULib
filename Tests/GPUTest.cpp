@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include "QPULib.h"
 #include <chrono>
+#include <iostream>
 
 struct Cursor {
   Ptr<Float> addr;
